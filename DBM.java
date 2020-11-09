@@ -1,12 +1,17 @@
 /* Copyright by Siyun Lee
  * 2020.10.22
  */
+
 public class DBM {
-	LOGIN login; //·Î±×ÀÎÈ­¸é
-	MENU menu; //¸Ş´ºÈ­¸é
+	LOGIN login; //ë¡œê·¸ì¸í™”ë©´
+	MENU menu; //ë©”ë‰´í™”ë©´
 	static boolean login_check = false;
 	static RESULT[] dataset = null;
 	static RESULT data = new RESULT("","","","","","","",0.0,"","","");
+	//
+	static int[] show = { 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+	static String SelectedDname = "Default";
+	//
 	public static void main(String[] args) {
 		MAIN main = new MAIN();
 		main.login = new LOGIN(); 
