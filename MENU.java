@@ -15,8 +15,8 @@ public class MENU extends JFrame {
 	String tx = "검색된 인원:";
 	JLabel label2 = new JLabel(tx);
 	JLabel label3 = new JLabel("0");
-	JLabel label5 = new JLabel("선택한 직원:");
-	JLabel label6 = new JLabel("");
+	JButton label5 = new JButton("선택한 직원");
+	String str="";
 	JButton search_button = new JButton("이동");
 	JTextField searchField = new JTextField(10);
 	int chosen = 0;
@@ -166,6 +166,7 @@ public class MENU extends JFrame {
 		for(int init = 1; init<12;init++) {
 			DBM.show[init]=0;
 		}
+		south.add(label5);
 		south.add(btn);
 		south.add(btn4);
 		south.add(btn3);
@@ -194,7 +195,6 @@ public class MENU extends JFrame {
 				for(int count=0;count<row;count++) {
 					if((boolean) table.getValueAt(count,0)) {
 						SelectedSsn = append(SelectedSsn, (String)table.getValueAt(count,4));
-						System.out.println(SelectedSsn);
 					}
 				}
 				for (String line : SelectedSsn) {
@@ -322,7 +322,35 @@ public class MENU extends JFrame {
 				DBM.show[11] += 1;
 			}
 		});
-
+		label5.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				//
+				for(int count=0;count<row;count++) {
+					if((boolean) table.getValueAt(count,0)) {
+						SelectedSsn = append(SelectedSsn, (String)table.getValueAt(count,4));
+					}
+				}
+				int rr=0;
+				int rrr=0;
+				String[][] a = new String[row][1];
+				for(String s : SelectedSsn) {
+					System.out.println(s);
+					for(Object[] ss : print_data) {
+						if(ss[4]==s) {
+							a[rr][rrr] = (String)ss[1]+" "+(String)ss[2];
+							rr++;
+							System.out.println((String)ss[1]+" "+(String)ss[2]);
+						}
+					}
+				}
+				String[] name2 = {"선택된 직원"};
+				JTable table2 = new JTable(a, name2);
+				JScrollPane da2 = new JScrollPane(table2);
+				frame.add(da2, BorderLayout.EAST);
+				frame.setVisible(true);
+			}
+		});
 		//
 		frame.add(north, BorderLayout.NORTH);
 		frame.add(south, BorderLayout.SOUTH);
@@ -362,5 +390,3 @@ public class MENU extends JFrame {
 		}
 	}
 }
-
-
