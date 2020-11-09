@@ -1,5 +1,5 @@
 public class MAIN{
-	static LOGIN login; //·Î±×ÀÎÈ­¸é
+	static LOGIN login; //ë¡œê·¸ì¸í™”ë©´
 	static MENU menu;
 	static INSERT insert;
 	public static void main(String[] args) {
@@ -22,6 +22,11 @@ public class MAIN{
 	
 	public static void insert2() {
 		insert.dispose();
+		MAIN main = new MAIN();
+		main.menu = new MENU();		
+	}
+	public static void searching() {
+		menu.dispose();
 		MAIN main = new MAIN();
 		main.menu = new MENU();		
 	}
